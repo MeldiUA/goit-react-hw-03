@@ -47,7 +47,7 @@ export default function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={handleAddContactBtn} />
-      <SearchBox inputValue={searchName} handleSaerch={handleSearch} />
+      <SearchBox inputValue={searchName} handleSearch={handleSearch} />
       <ContactList contacts={searchContacts} onDelete={handleDeleteBtn} />
     </div>
   );
