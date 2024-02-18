@@ -2,7 +2,6 @@ import Contact from './Contact/Contact';
 import css from './ContactList.module.css';
 
 export default function ContactList({ contacts, onDelete }) {
-  console.log(contacts);
   return (
     <div>
       {contacts.length ? (

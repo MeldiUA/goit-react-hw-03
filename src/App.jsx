@@ -39,7 +39,6 @@ export default function App() {
 
   const filterContact = serchName
     ? contacts.filter(contact => {
-        console.log(serchName);
         return contact.name.toLowerCase().includes(serchName);
       })
     : contacts;
