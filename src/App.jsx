@@ -13,7 +13,7 @@ export default function App() {
     return savedContacts ? JSON.parse(savedContacts) : [];
   });
 
-  const [serchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState('');
 
   useEffect(() => {
     localStorage.setItem(KEY_CONTACTS_LS, JSON.stringify(contacts));
@@ -29,17 +29,17 @@ export default function App() {
     actions.resetForm();
   };
 
-  const handleSerch = name => {
-    setSearchName(name.trim().toLowerCase());
+  const handleSearch = event => {
+    setSearchName(event.target.value.trim());
   };
 
   const handleDeleteBtn = id => {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
 
-  const filterContact = serchName
+  const searchContacts = searchName
     ? contacts.filter(contact => {
-        return contact.name.toLowerCase().includes(serchName);
+        return contact.name.toLowerCase().includes(searchName.toLowerCase());
       })
     : contacts;
 
@@ -47,8 +47,8 @@ export default function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={handleAddContactBtn} />
-      <SearchBox handleSerch={handleSerch} />
-      <ContactList contacts={filterContact} onDelete={handleDeleteBtn} />
+      <SearchBox inputValue={searchName} handleSaerch={handleSearch} />
+      <ContactList contacts={searchContacts} onDelete={handleDeleteBtn} />
     </div>
   );
 }
